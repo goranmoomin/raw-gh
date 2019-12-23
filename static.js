@@ -1,0 +1,52 @@
+module.exports = {
+        "index.html": String.raw`
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>RawGitHub - Serve files directly from GitHub</title>
+        <link rel="stylesheet" href="https://watercss.netlify.com/dist/light.css">
+        <style>
+            #url {
+                width: calc(100% - 20px);
+            }
+        </style>
+    </head>
+    <body>
+        <h1>RawGitHub - Serve files directly from GitHub</h1>
+        <p>
+            RawGitHub is a service similar to <a href="https://rawgit.com/">RawGit</a>,
+            but this is running on <a href="https://workers.cloudflare.com/">CloudFlare Workers</a>.
+        </p>
+        <p>
+            The default value of URL below is the <a href="https://fishshell.com">fish-shell</a>'s tutorial page,
+            <a href="https://github.com/fish-shell/fish-site/blob/master/site/docs/current/tutorial.html">pulled directly from GitHub</a>.
+            Try out <a href="https://raw.githubusercontent.com/fish-shell/fish-site/master/site/docs/current/tutorial.html">GitHub's Raw link</a>
+            and compare it with the RawGitHub one!
+        </p>
+        <form id="form">
+            <fieldset>
+                <legend>RawGitHub Redirector</legend>
+                <label for="url">GitHub file URL: </label>
+                <input type="url" id="url" value="https://github.com/fish-shell/fish-site/blob/master/site/docs/current/tutorial.html">
+                <button id="button">Get sharable URL to serve file</button>
+            </fieldset>
+        </form>
+        <script>
+            let buttonEl = document.querySelector("#button");
+            let urlEl = document.querySelector("#url");
+            buttonEl.onclick = function (e) {
+                e.preventDefault();
+                const url = new URL(urlEl.value);
+                if(url.hostname === "github.com" || url.hostname === "www.github.com") {
+                    url.pathname = url.pathname.replace(/^\/(?<user>[^\/]+?)\/(?<repo>[^\/]+?)\/blob\/(?<branch>[^\/]+?)\/(?<path>.*)\/?$/, "/$<user>/$<repo>/$<branch>/$<path>");
+                }
+                url.hostname = location.hostname;
+                location.href = url.toString();
+            }
+        </script>
+    </body>
+</html>
+`
+};

@@ -1,0 +1,13 @@
+{
+    "name": "raw-gh",
+    "version": "0.0.1",
+    "description": "RawGit alike service that runs on Cloudflare Workers",
+    "main": "index.js",
+    "scripts": {},
+    "author": "Sungbin Jo <pcr910303@icloud.com>",
+    "license": "MIT",
+    "dependencies": {
+        "browser-extname": "^1.0.0",
+        "mime": "^2.4.4"
+    }
+}
