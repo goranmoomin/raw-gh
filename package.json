@@ -3,11 +3,17 @@
     "version": "0.0.1",
     "description": "RawGit alike service that runs on Cloudflare Workers",
     "main": "index.js",
-    "scripts": {},
-    "author": "Sungbin Jo <pcr910303@icloud.com>",
+    "scripts": {
+        "build": "wrangler build",
+        "deploy": "wrangler publish"
+    },
+    "author": "Sungbin Jo <goranmoomin@daum.net>",
     "license": "MIT",
     "dependencies": {
         "browser-extname": "^1.0.0",
         "mime": "^2.4.4"
+    },
+    "devDependencies": {
+        "@cloudflare/wrangler": "^1.19.0"
     }
 }

@@ -1,6 +1,6 @@
 ## RawGitHub - Serve files directly from GitHub
 
-[RawGitHub](https://raw-gh.pcr910303.workers.dev) is a service similar to
+[RawGitHub](https://raw-gh.goranmoomin.workers.dev) is a service similar to
 [RawGit](https://rawgit.com/), but this is running on
 [CloudFlare Workers](https://workers.cloudflare.com/).
 
